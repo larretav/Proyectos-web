@@ -1,0 +1,21 @@
+body {
+  position: relative;
+  margin: auto; 
+  color: #001028;
+  background: rgb(248, 248, 248); 
+  font-family: Arial, sans-serif; 
+  font-size: 12px;
+}
+
+.padding {
+  padding: 20px 0;
+}
+
+
+h1 {
+  color: #5D6975;
+  font-size: 2.4em;
+  line-height: 1.4em;
+  font-weight: normal;
+  text-align:center;
+}
