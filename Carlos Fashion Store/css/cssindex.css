@@ -1,0 +1,59 @@
+/* Prelaoder */
+#preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  background: #fff url("../img/preloader.svg") no-repeat center center;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+}
+
+#elindex {
+  display: table;
+  width: 100%;
+  height: 100vh;
+  background: url(../img/fondo.jpg) top center fixed;
+  background-size: cover;
+}
+
+#login{
+  width: 60%;
+  margin: 20% 20% auto 20%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+@media only screen and (max-width: 500px) {
+    #login{
+        width: 100%;
+        margin: 10% auto auto auto;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    #login{
+        margin: 10% auto auto auto;
+    }
+}
+
+
+
+.inputindex{
+  background: rgba(0, 0, 0, 0.6);
+  border: 0px;
+  color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+  padding: 0;
+}

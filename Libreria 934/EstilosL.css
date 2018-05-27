@@ -1,0 +1,103 @@
+body {
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: #EFEFEF;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	font-style: normal;
+	font-weight: 200;
+}
+#InfoSesion {
+	height: 1.4cm;
+	background-color: #835B28;
+	margin-top: px;
+	margin-bottom: 20px;
+	width: 1300px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.BtnSesion {
+	width: 250px;
+	height: 40px;
+	margin-top: 5px;
+	float: right;
+	margin-right: 0px;
+}
+
+#ParaIngresar {
+	margin-right: 2%;
+	float: right;
+	text-align: right;
+	width: 50%;
+	height: 50px;
+}
+
+
+#Todo {
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#Menu {
+	height: 1.3cm;
+	text-align: left;
+	text-decoration: none;
+	background-repeat: no-repeat;
+
+}
+
+#Banner {
+	width: 1200px;
+	background-image: url(imagenes/B934.jpg);
+	background-repeat: no-repeat;
+	background-size: auto auto;
+	height: 171px;
+	-webkit-box-sizing: inherit;
+	-moz-box-sizing: inherit;
+	box-sizing: inherit;
+	margin-top: 0px;
+	padding-bottom: 0px;
+}
+#ParaIngresar ul {
+	list-style-image: none;
+	list-style-type: none;
+	width: auto;
+}
+#InfoSesion nav {
+	width: 50%;
+	float: right;
+	text-align: left;
+}
+#InfoSesion nav ul {
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	list-style: none;
+	float: right;
+}
+nav ul li {
+	float: left;
+	color: #FFFFFF;
+	font-size: 14px;
+	text-align: left;
+	margin-right: 25px;
+	letter-spacing: 1px;
+	font-weight: bold;
+}
+ul li a {
+	color: #FFFFFF;
+	text-decoration: none;
+	text-align: right;
+	float: left;
+}
+ul li:hover a {
+	color: #2C9AB7;
+}
+#TodoIngresar {
+	height: 300px;
+	width: 400px;
+	margin-top: 120px;
+	margin-left: 40%;
+	text-align: center;
+	float: left;
+}
