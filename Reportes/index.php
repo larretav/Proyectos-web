@@ -3,73 +3,73 @@
 	$usuario = 'SELECT first_name, last_name, car_model, car_number FROM `walker` WHERE car_number = 233';	
 	$usuarios=$mysqli->query($usuario);
 	
-if(isset($_POST['create_pdf'])){
-	require_once('tcpdf/tcpdf.php');
-	
-	$pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
-	
-	$pdf->SetCreator(PDF_CREATOR);
-	$pdf->SetAuthor('');
-	$pdf->SetTitle($_POST['reporte_name']);
-	
-	$pdf->setPrintHeader(false); 
-	$pdf->setPrintFooter(false);
-	$pdf->SetMargins(20, 20, 20, false); 
-	$pdf->SetAutoPageBreak(true, 20); 
-	$pdf->SetFont('Helvetica', '', 10);
-	$pdf->addPage();
+  if(isset($_POST['create_pdf'])){
+    require_once('tcpdf/tcpdf.php');
+    
+    $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
+    
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('');
+    $pdf->SetTitle($_POST['reporte_name']);
+    
+    $pdf->setPrintHeader(false); 
+    $pdf->setPrintFooter(false);
+    $pdf->SetMargins(20, 20, 20, false); 
+    $pdf->SetAutoPageBreak(true, 20); 
+    $pdf->SetFont('Helvetica', '', 10);
+    $pdf->addPage();
 
-	$content = '';
-	
-	$content .= '
-		<div class="row">
-        	<div class="col-md-12">
-            	<h1 style="text-align:center;">'.$_POST['reporte_name'].'</h1>
-       	
-      <table border="1" cellpadding="5">
-        <thead>
-          <tr>
-            <th>DNI</th>
-            <th>A. PATERNO</th>
-            <th>A. MATERNO</th>
-            <th>NOMBRES</th>
-            <th>AREA</th>
-            <th>SUELDO</th>
-          </tr>
-        </thead>
-	';
-	
-	
-	while ($user=$usuarios->fetch_assoc()) { 
-			if($user['activo']=='A'){  $color= '#f5f5f5'; }else{ $color= '#fbb2b2'; }
-	$content .= '
-		<tr bgcolor="'.$color.'">
-            <td>'.$user['dni'].'</td>
-            <td>'.$user['paterno'].'</td>
-            <td>'.$user['materno'].'</td>
-            <td>'.$user['nombres'].'</td>
-            <td>'.$user['area'].'</td>
-            <td>S/. '.$user['sueldo'].'</td>
-        </tr>
-	';
-	}
-	
-	$content .= '</table>';
-	
-	$content .= '
-		<div class="row padding">
-        	<div class="col-md-12" style="text-align:center;">
-            	<span>Pdf Creator </span><a href="http://www.redecodifica.com">By Miguel Angel</a>
-            </div>
-        </div>
-    	
-	';
-	
-	$pdf->writeHTML($content, true, 0, true, 0);
+    $content = '';
+    
+    $content .= '
+      <div class="row">
+            <div class="col-md-12">
+                <h1 style="text-align:center;">'.$_POST['reporte_name'].'</h1>
+          
+        <table border="1" cellpadding="5">
+          <thead>
+            <tr>
+              <th>DNI</th>
+              <th>A. PATERNO</th>
+              <th>A. MATERNO</th>
+              <th>NOMBRES</th>
+              <th>AREA</th>
+              <th>SUELDO</th>
+            </tr>
+          </thead>
+    ';
+    
+    
+    while ($user=$usuarios->fetch_assoc()) { 
+      if($user['activo']=='A'){  $color= '#f5f5f5'; }else{ $color= '#fbb2b2'; }
+      $content .= '
+        <tr bgcolor="'.$color.'">
+                <td>'.$user['dni'].'</td>
+                <td>'.$user['paterno'].'</td>
+                <td>'.$user['materno'].'</td>
+                <td>'.$user['nombres'].'</td>
+                <td>'.$user['area'].'</td>
+                <td>S/. '.$user['sueldo'].'</td>
+            </tr>
+      ';
+    }
+    
+    $content .= '</table>';
+    
+    $content .= '
+      <div class="row padding">
+            <div class="col-md-12" style="text-align:center;">
+                <span>Pdf Creator </span><a href="http://www.redecodifica.com">By Miguel Angel</a>
+              </div>
+          </div>
+        
+    ';
+    
+    $pdf->writeHTML($content, true, 0, true, 0);
 
-	$pdf->lastPage();
-	$pdf->output('Reporte.pdf', 'I');
-}
+    $pdf->lastPage();
+    $pdf->output('Reporte.pdf', 'I');
+  }
 
 ?>
           
@@ -119,22 +119,22 @@ if(isset($_POST['create_pdf'])){
             </td>
 
             <td><button type="button" class="btn btn-success" onclick="Agregar()">Agregar</button></td>
-            <td><button type="button" class="btn btn-warning">Consultar</button></td>
-            <td> <input type="submit" name="create_pdf" class="btn btn-danger pull-right" value="Generar"></td>
+            <td><button type="button" class="btn btn-danger" onclick="EliminarCol()">Eliminar</button></td>
+            <td><button type="button" class="btn btn-warning" onclick="GenerarQuery()">Consultar</button></td>
+            <td><input type="submit" name="create_pdf" class="btn btn-primary pull-right" value="Generar"></td>
           </tr>
         </table>
       </div>
       
+      <!--TABLA DE DATOS A CONSULTAR-->
       <table class="table" id="a-consultar">
         <tbody>
           <tr>
-            <td>0</td>
           </tr>
         </tbody>
-      <!--AQUI SE GENERA LO QUE SE CONSULTARA A LA BD-->
-
       </table>
-      <!-- Tabla de tuplas -->
+
+      <!-- TABLA DE TUPLAS -->
       <table class="table table-hover table-striped">
         <thead>
           <tr>
@@ -142,31 +142,57 @@ if(isset($_POST['create_pdf'])){
           </tr>
         </thead>
       </table>
-      <div class="col-md-12">
-        <form method="post">
-          <input type="hidden" name="reporte_name" value="<?php echo $h1; ?>">
-         
-        </form>
-      </div>
     </div>
+    <p id="demo"></p><br>
+    <p id="demo2"></p>
+    <!--FUNCIONES SCRIPT-->
     <script type="text/javascript">
+      var consulta = []; // Arreglo para crear la consulta
+      var ccampos = []; // Todos los campos de la tabla
+      var nom_campos = []; // Nombre de los campos Ej. first_name = Nombre
+
+
+      //CREAR OBJETO EN CADA CELDA
       function createCell(cell, text, style) {
-        var div = document.createElement('div'), // create DIV element
-            txt = document.createTextNode(text); // create text node
-        div.appendChild(txt);                    // append text node to the DIV
-        div.setAttribute('class', style);        // set DIV class attribute
-        div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
-        cell.appendChild(div);                   // append DIV to the table cell
+        var div = document.createElement('button'), // Creamos elemento tipo Button
+            txt = document.createTextNode(text); // Creamos un TexNode
+        div.appendChild(txt);                    // Agregamos el TextNode al Button
+        div.setAttribute('type', "button");        // set DIV class attribute
+        div.setAttribute('class', "btn aconsultar");
+        div.setAttribute('id', text);
+        cell.appendChild(div);                   // Agregamos el Button a la celda
       }
 
+      //AGREGAR
       function Agregar() {
         var campo = document.getElementById('txtCampos').value;
-        var tbl = document.getElementById('a-consultar'), // table reference
+        var tbl = document.getElementById('a-consultar'),
             i;
-        // open loop for each row and append cell
+        //Ciclo para agregar celda en cada renglon
         for (i = 0; i < tbl.rows.length; i++) {
             createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length), campo);
         }
+        consulta.push(campo); //AGREGO ELEMENTOS AL ARREGLO "CONSULTA"
+        document.getElementById("demo").innerHTML = consulta; //MOSTRAR
+      }
+
+      // ELIMINAR
+      function EliminarCol() {
+          var tbl = document.getElementById('a-consultar'),
+          lastCol = tbl.rows[0].cells.length - 1;
+          tbl.rows[0].deleteCell(lastCol);
+          consulta.pop(); //ELIMINO EL ULTIMO ELEMENTO DEL ARREGLO "CONSULTA"
+          document.getElementById("demo").innerHTML = consulta; //MOSTRAR
+      }
+
+      function GenerarQuery() {
+        var q = "", x;
+        for (let x = 0; x < consulta.length; x++) {
+          q = q + consulta[x] + ", ";
+          alert(q);
+        }
+        document.getElementById("demo2").innerHTML = consulta; //MOSTRAR
+
       }
     </script>
 </body>
