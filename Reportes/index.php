@@ -93,7 +93,7 @@
 <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body onload="LlenarArrays();">
 	<div class="container">
     <div class="row padding">
       <div class="col-md-12">
@@ -150,7 +150,17 @@
       var consulta = []; // Arreglo para crear la consulta
       var ccampos = []; // Todos los campos de la tabla
       var nom_campos = []; // Nombre de los campos Ej. first_name = Nombre
-
+      
+      function LlenarArrays() {
+        <?php
+          $query = $mysqli -> query ("SELECT COLUMN_NAME AS CNOMBRE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'walker'");
+          while ($valores = mysqli_fetch_array($query)) {
+            ?>
+            ccampos.push("<?php  echo "$valores[CNOMBRE]";  ?>"); // Cargamos las tuplas de la consulta al arreglo Consulta
+            <?php
+          }
+        ?>
+      }
 
       //CREAR OBJETO EN CADA CELDA
       function createCell(cell, text, style) {
