@@ -145,7 +145,18 @@
     </div>
     <p id="demo"></p><br>
     <p id="demo2"></p><br>
-    <p id="demo3" style="color:green;"></p><br>
+    <table>
+      <tr>
+        <td>
+          <p id="demo3" style="color:green;"></p>
+        </td>
+        <td>
+          <p id="demo4" style="color:red; "></p>
+        </td>            
+      </tr>
+      
+    </table>
+    
     <!--FUNCIONES SCRIPT-->
     <script type="text/javascript">
       var consulta = []; // Arreglo para crear la consulta
@@ -162,13 +173,69 @@
           }
         ?>
 
-        nom_campos = ["",];
-        
+        nom_campos = [
+          "Carné de identidad",
+          "Nombre",
+          "Apellido",
+          "Teléfono",
+          "Correo electrónico",
+          "Contraseña",
+          "Imagen",
+          "Bio",
+          "Dirección",
+          "Estado",
+          "País",
+          "Código postal",
+          "Token de dispositivo",
+          "Tipo de dispositivo",
+          "Iniciar sesión por",
+          "Identificación única social",
+          "Simbólico",
+          "Activación de correo electrónico",
+          "Vencimiento del token",
+          "Creado en",
+          "Actualizado en",
+          "Está activo",
+          "Está disponible",
+          "Latitud",
+          "Longitud",
+          "Esta aprobado",
+          "Tipo",
+          "Identificación del comerciante",
+          "Id de la cuenta",
+          "Últimos 4",
+          "Código de activación",
+          "Zona horaria",
+          "Eliminado en",
+          "Latitud antigua",
+          "Longitud antigua",
+          "Cojinete",
+          "Modelo de auto",
+          "Número de coche",
+          "Tarifa",
+          "Tasa de conteo",
+          "En la zona",
+          "Viejo en área",
+          "Declinados",
+          "No. Taxi",
+          "Versión de la aplicación",
+          "Ult. actualización"
+        ];
+
         var x=0;
         for (let x = 0; x < ccampos.length; x++) {
           var lista= document.getElementById('demo3');
           var div = document.createElement('li'),
               txt = document.createTextNode(ccampos[x]);
+          div.appendChild(txt);
+          lista.appendChild(div);
+        }
+        x=0;
+        
+        for (let x = 0; x < nom_campos.length; x++) {
+          var lista= document.getElementById('demo4');
+          var div = document.createElement('li'),
+              txt = document.createTextNode(nom_campos[x]);
           div.appendChild(txt);
           lista.appendChild(div);
         }
