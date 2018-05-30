@@ -144,7 +144,8 @@
       </table>
     </div>
     <p id="demo"></p><br>
-    <p id="demo2"></p>
+    <p id="demo2"></p><br>
+    <p id="demo3" style="color:green;"></p><br>
     <!--FUNCIONES SCRIPT-->
     <script type="text/javascript">
       var consulta = []; // Arreglo para crear la consulta
@@ -160,6 +161,17 @@
             <?php
           }
         ?>
+
+        nom_campos = ["",];
+        
+        var x=0;
+        for (let x = 0; x < ccampos.length; x++) {
+          var lista= document.getElementById('demo3');
+          var div = document.createElement('li'),
+              txt = document.createTextNode(ccampos[x]);
+          div.appendChild(txt);
+          lista.appendChild(div);
+        }
       }
 
       //CREAR OBJETO EN CADA CELDA
@@ -167,7 +179,7 @@
         var div = document.createElement('button'), // Creamos elemento tipo Button
             txt = document.createTextNode(text); // Creamos un TexNode
         div.appendChild(txt);                    // Agregamos el TextNode al Button
-        div.setAttribute('type', "button");        // set DIV class attribute
+        div.setAttribute('type', "button");        
         div.setAttribute('class', "btn aconsultar");
         div.setAttribute('id', text);
         cell.appendChild(div);                   // Agregamos el Button a la celda
