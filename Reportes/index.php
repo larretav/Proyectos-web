@@ -282,36 +282,45 @@
       function Consultar() {
         var query= GenerarQuery();
         if (query=="1"){
+          alert("No hay nada que consultar");
+        }
+        else if(query=="2"){
           alert("No se debe combinar Todos los campos con campos específicos :(");
         }
-        else {
-          alert("Todo bien compa");
+        else{
+          alert(query);
         }
       }
 
       function GenerarQuery() {
         var q = "";
-        for (let x = 0; x < consulta.length; x++) {
-          if (consulta[x]!="*") {           //Si es diferente a "*" (todos los campos)
-            for (let y = 0; y < ccampos.length; y++) { //Le ponemos As "Nombre correcto" al nombre de la columna de la bd
-              if (consulta[x]==ccampos[y]) {                         //Si el campo de la consulta a generar existe
-                q = q + consulta[x] + " As " + nom_campos[y] + ", "; //en los campos de la tabla consultada
-              }                                                      //se concatena "nombre del campo" + As "Nombre correcto de campo"
+
+        if (consulta.length==0){ //Si el arreglo esta vacio
+          return q="1";
+        } 
+        else{
+          for (let x = 0; x < consulta.length; x++) { //For para recorrer el arreglo con el que se formará la consulta
+            if (consulta[x]=="*" && consulta.length > 1) {//Si hay un "*" (todos los campos) y mas campos
+              q = "2";                                    //NOTA: NO DEBEN COMBINARSE "*" CON CAMPOS ESPECIFICOS
+              break;    
             }
-            q = q.substring(0, q.length - 2)
-            q = "Select " + q + " From walker"
+            else if(consulta[x]=="*" && consulta.length == 1){
+              q = "Select * From walker";
+              break;
+            }
+            else{
+              for (let y = 0; y < ccampos.length; y++) { //Le ponemos As "Nombre correcto" al nombre de la columna de la bd
+                if (consulta[x]==ccampos[y]) {                         //Si el campo de la consulta a generar existe
+                  q = q + consulta[x] + " As " + nom_campos[y] + ", "; //en los campos de la tabla consultada
+                }                                                      //se concatena "nombre del campo" + As "Nombre correcto de campo"
+              }
+              q = q.substring(0, q.length - 2)
+              q = "Select " + q + " From walker"
+            }
           }
-          else if(consulta[x]=="*" && consulta.length <= 1){ //Si hay un "*" (todos los campos) NOTA: NO DEBEN COMBINARSE "*" CON CAMPOS ESPECIFICOS
-            q = "Select * From walker"
-            break;
-          }
-          else if(consulta[x]=="*" && consulta.length > 1){ //Si hay un "*" (todos los campos) NOTA: NO DEBEN COMBINARSE "*" CON CAMPOS ESPECIFICOS
-            q = "1";
-            break;
-          }
+          return q;
         }
-        return q;
-      }
+      } //Fin Function
     </script>
 </body>
 </html>
