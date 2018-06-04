@@ -74,7 +74,7 @@
 ?>
           
 <!-- HTML --> 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 
@@ -90,7 +90,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-<link href="css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body onload="LlenarArrays();">
@@ -104,30 +104,27 @@
     <div class="row">
       <!-- Obtener nombre de columnas -->
       <div class="form-group">
-        <h5>Campos:</h5>
-        <table class="table">
+        <table class="table" style="margin-bottom:0px; border:solid red 3px">
           <tr>
-            <td>
-              <select class="form-control" id="txtCampos">
-                <?php
-                  $query = $mysqli -> query ("SELECT COLUMN_NAME AS CNOMBRE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'walker'");
-                  while ($valores = mysqli_fetch_array($query)) {
-                    echo '<option value="'.$valores[CNOMBRE].'">'.$valores[CNOMBRE].'</option>';
-                  }
-                ?>
-              </select>
-            </td>
-
             <td><button type="button" class="btn btn-success" onclick="Agregar()">Agregar</button></td>
             <td><button type="button" class="btn btn-danger" onclick="EliminarCol()">Eliminar</button></td>
-            <td><button type="button" class="btn btn-warning" onclick="GenerarQuery()">Consultar</button></td>
-            <td><input type="submit" name="create_pdf" class="btn btn-primary pull-right" value="Generar"></td>
+            <td><button type="button" class="btn btn-warning" onclick="Consultar()">Consultar</button></td>
+            <td><input type="submit" name="create_pdf" class="btn btn-primary" value="Generar"></td>
+          </tr>
+
+          <tr>
+            <td>
+              <select class="form-control" id="txtCampos" style="width:90px;">
+                <option value="*">Todo...</option>
+                <!-- Se ingresan options con un arreglo -->
+              </select>
+            </td>
           </tr>
         </table>
       </div>
       
       <!--TABLA DE DATOS A CONSULTAR-->
-      <table class="table" id="a-consultar">
+      <table class="table table-responsive" id="a-consultar">
         <tbody>
           <tr>
           </tr>
@@ -174,7 +171,7 @@
         ?>
 
         nom_campos = [
-          "Carné de identidad",
+          "Id",
           "Nombre",
           "Apellido",
           "Teléfono",
@@ -221,17 +218,25 @@
           "Versión de la aplicación",
           "Ult. actualización"
         ];
-
-        var x=0;
+        
+        //CARGAMOS LOS CAMPOS DE LA TABLA walker A UN SELECT HTML
+        
+        for (let x = 0; x < ccampos.length; x++) {
+          var select = document.getElementById("txtCampos");
+          var option = document.createElement("option"),
+              texto = document.createTextNode(ccampos[x]);
+          option.appendChild(texto);
+          select.appendChild(option); 
+        }
+        
         for (let x = 0; x < ccampos.length; x++) {
           var lista= document.getElementById('demo3');
-          var div = document.createElement('li'),
+          var div = document.createElement('li');
               txt = document.createTextNode(ccampos[x]);
           div.appendChild(txt);
           lista.appendChild(div);
         }
-        x=0;
-        
+
         for (let x = 0; x < nom_campos.length; x++) {
           var lista= document.getElementById('demo4');
           var div = document.createElement('li'),
@@ -247,7 +252,7 @@
             txt = document.createTextNode(text); // Creamos un TexNode
         div.appendChild(txt);                    // Agregamos el TextNode al Button
         div.setAttribute('type', "button");        
-        div.setAttribute('class', "btn aconsultar");
+        div.setAttribute('class', "btn btn-outline-dark");
         div.setAttribute('id', text);
         cell.appendChild(div);                   // Agregamos el Button a la celda
       }
@@ -273,15 +278,39 @@
           consulta.pop(); //ELIMINO EL ULTIMO ELEMENTO DEL ARREGLO "CONSULTA"
           document.getElementById("demo").innerHTML = consulta; //MOSTRAR
       }
+      
+      function Consultar() {
+        var query= GenerarQuery();
+        if (query=="1"){
+          alert("No se debe combinar Todos los campos con campos específicos :(");
+        }
+        else {
+          alert("Todo bien compa");
+        }
+      }
 
       function GenerarQuery() {
-        var q = "", x;
+        var q = "";
         for (let x = 0; x < consulta.length; x++) {
-          q = q + consulta[x] + ", ";
-          alert(q);
+          if (consulta[x]!="*") {           //Si es diferente a "*" (todos los campos)
+            for (let y = 0; y < ccampos.length; y++) { //Le ponemos As "Nombre correcto" al nombre de la columna de la bd
+              if (consulta[x]==ccampos[y]) {                         //Si el campo de la consulta a generar existe
+                q = q + consulta[x] + " As " + nom_campos[y] + ", "; //en los campos de la tabla consultada
+              }                                                      //se concatena "nombre del campo" + As "Nombre correcto de campo"
+            }
+            q = q.substring(0, q.length - 2)
+            q = "Select " + q + " From walker"
+          }
+          else if(consulta[x]=="*" && consulta.length <= 1){ //Si hay un "*" (todos los campos) NOTA: NO DEBEN COMBINARSE "*" CON CAMPOS ESPECIFICOS
+            q = "Select * From walker"
+            break;
+          }
+          else if(consulta[x]=="*" && consulta.length > 1){ //Si hay un "*" (todos los campos) NOTA: NO DEBEN COMBINARSE "*" CON CAMPOS ESPECIFICOS
+            q = "1";
+            break;
+          }
         }
-        document.getElementById("demo2").innerHTML = consulta; //MOSTRAR
-
+        return q;
       }
     </script>
 </body>
