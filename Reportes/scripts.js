@@ -17,7 +17,7 @@ function GenerarSelect() {
     var campo = document.getElementById('txtCampos').value;
     var tbl = document.getElementById('tbl-generarquery'),
         i;
-    for (i = 1; i < tbl.rows.length; i++) {
+    for (i = 0; i < tbl.rows.length; i++) {
         createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length), campo);
     }
 }
@@ -84,13 +84,16 @@ function GenerarQuery() {
                         q = q + consulta[x] + " As " + nom_campos[y] + ", "; //en los campos de la tabla consultada
                     }                                                      //se concatena "nombre del campo" + As "Nombre correcto de campo"
                 }
-                q = q.substring(0, q.length - 2)
-                q = "Select " + q + " From walker"
+                q = q.substring(0, q.length - 2);
+                q = "Select " + q + " From walker";
             }
         }
         return q;
     }
 } //Fin Function
 
-
-
+$(document).ready(function(){
+    $('#btn-consult').click(function(){
+        $("#slct-consultas").css("display", "table");
+    });
+});

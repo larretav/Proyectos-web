@@ -96,7 +96,7 @@
 
     <title>Reportes</title>
 </head>
-<body>
+<body onload="LlenarArrays();">
     <div class="container">
         <div class="row padding">
             <div class="col-md-12">
@@ -105,23 +105,50 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
-                <select class="form-control" id="slct-consultas"></select>
+            <!-- Obtener nombre de columnas -->
+            <table class="table table-responsive" id="tablabotones">
+                <tbody>
+                    <tr>
+                        <td><button type="button" class="btn btn-success" onclick="Agregar()">Agregar</button></td>
+                        <td><button type="button" class="btn btn-danger" onclick="EliminarCol()">Eliminar</button></td>
+                        <td><button type="button" class="btn btn-warning" onclick="Consultar()">Consultar</button></td>
+                        <td><input type="submit" name="create_pdf" class="btn btn-primary" value="Generar"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-responsive tablacenter" id="tbl-generarquery">
+                <tbody>
+                    <tr>
+                        <td>
+                            <select class="form-control" id="txtCampos">
+                                <option value="*">Todo...</option>
+                                <!-- Se ingresan options con un arreglo -->
+                            </select>
+                        </td>
+                        <td>
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-outline-dark btn-sm">
+                                    <input type="checkbox" onchange=""> Where
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-group">
+                
             </div>
 
-            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
-                <button class="btn btn-warning">Consultar</button>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
-                <select class="form-control" id="slct-consultas" style="display:none"></select>
-            </div>
-        </div>
+            <!--TABLA DE DATOS A CONSULTAR-->
+            <table class="table table-responsive" id="a-consultar">
+                <tbody>
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
 
             <!-- TABLA DE TUPLAS -->
-        <div class="row">
             <table class="table table-hover table-striped">
                 <thead>
                     <tr>
@@ -130,6 +157,72 @@
                 </thead>
             </table>
         </div>
+        <button type="button" class="btn btn-success" onclick="GenerarSelect()">Agregar Select</button>
     </div>
+
+
+
+    <!--SCRIPTS-->
+    <script type="text/javascript">
+        function LlenarArrays() {
+            <?php
+                $query = $mysqli -> query ("SELECT COLUMN_NAME AS CNOMBRE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'walker'");
+                while ($valores = mysqli_fetch_array($query)) {
+                    ?>
+                    ccampos.push("<?php  echo "$valores[CNOMBRE]";  ?>"); // Cargamos las tuplas de la consulta al arreglo Consulta
+                    <?php
+                }
+            ?>
+            LlenarSelect();
+            nom_campos = [
+                "Id",
+                "Nombre",
+                "Apellido",
+                "Teléfono",
+                "Correo electrónico",
+                "Contraseña",
+                "Imagen",
+                "Bio",
+                "Dirección",
+                "Estado",
+                "País",
+                "Código postal",
+                "Token de dispositivo",
+                "Tipo de dispositivo",
+                "Iniciar sesión por",
+                "Identificación única social",
+                "Simbólico",
+                "Activación de correo electrónico",
+                "Vencimiento del token",
+                "Creado en",
+                "Actualizado en",
+                "Está activo",
+                "Está disponible",
+                "Latitud",
+                "Longitud",
+                "Esta aprobado",
+                "Tipo",
+                "Identificación del comerciante",
+                "Id de la cuenta",
+                "Últimos 4",
+                "Código de activación",
+                "Zona horaria",
+                "Eliminado en",
+                "Latitud antigua",
+                "Longitud antigua",
+                "Cojinete",
+                "Modelo de auto",
+                "Número de coche",
+                "Tarifa",
+                "Tasa de conteo",
+                "En la zona",
+                "Viejo en área",
+                "Declinados",
+                "No. Taxi",
+                "Versión de la aplicación",
+                "Ult. actualización"
+            ];
+        }
+    </script>
 </body>
 </html>
