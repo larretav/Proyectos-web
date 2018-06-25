@@ -91,9 +91,24 @@ function GenerarQuery() {
         return q;
     }
 } //Fin Function
+$(document).ready(function() {
+    $("#slct-consultas").change(function(){
+        consulta = document.getElementById('slct-consultas').value;
+        switch (consulta) {
+            case '1': 
+                $("#slct-fecha").show(300);
 
-$(document).ready(function(){
-    $('#btn-consult').click(function(){
-        $("#slct-consultas").css("display", "table");
+                $(".slct-rangofecha").hide();
+                break;
+        
+            case '2':
+                $("#slct-fecha").hide();
+
+                $(".slct-rangofecha").show(300);
+                break;
+        }
     });
+
 });
+
+$('#datepicker').datetimepicker();
