@@ -91,6 +91,13 @@ function GenerarQuery() {
         return q;
     }
 } //Fin Function
+
+$(function () {
+    $('#datetimepicker1').datetimepicker();
+    $('#datetimepicker2').datetimepicker();
+    $('#datetimepicker3').datetimepicker();
+});
+
 $(document).ready(function() {
     $("#slct-consultas").change(function(){
         consulta = document.getElementById('slct-consultas').value;
@@ -111,4 +118,3 @@ $(document).ready(function() {
 
 });
 
-$('#datepicker').datetimepicker();
