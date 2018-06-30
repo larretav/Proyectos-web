@@ -92,13 +92,39 @@ function GenerarQuery() {
     }
 } //Fin Function
 
+function ConstFecha(fecha) {
+    var consfecha = "";
+    consfecha = fecha.substring(6,);
+}
+
 $(function () {
-    $('#datetimepicker1').datetimepicker();
-    $('#datetimepicker2').datetimepicker();
-    $('#datetimepicker3').datetimepicker();
+    
 });
 
 $(document).ready(function() {
+    //Formato de fechas
+    $('#datetimepicker1').datetimepicker({
+        format: "DD/MM/YYYY H:mm:00"
+    });
+
+    $('#datetimepicker2').datetimepicker({
+        format: "DD/MM/YYYY H:mm:00"
+    });
+
+    $('#datetimepicker3').datetimepicker({
+        useCurrent: false,
+        format: "DD/MM/YYYY H:mm:00"
+    });
+
+    //Enlazar DateTimePicker 2 y 3
+    $("#datetimepicker2").on("change.datetimepicker", function (e) {
+        $('#datetimepicker3').datetimepicker('minDate', e.date);
+    });
+    $("#datetimepicker3").on("change.datetimepicker", function (e) {
+        $('#datetimepicker2').datetimepicker('maxDate', e.date);
+    });
+
+    //Mostrar y ocultar DateTimePicker
     $("#slct-consultas").change(function(){
         consulta = document.getElementById('slct-consultas').value;
         switch (consulta) {
@@ -116,5 +142,13 @@ $(document).ready(function() {
         }
     });
 
+    //Bloquear escritura y pegado en DateTimePicker
+    $('.bloqueo').keypress(function(e){
+        return false;
+    });
+
+    $('.bloqueo').on('paste', function(e){
+        e.preventDefault();
+    });
 });
 

@@ -104,8 +104,8 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+        <div class="row padding">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 padding">
                 <select class="form-control" id="slct-consultas">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -120,7 +120,7 @@
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" id="slct-fecha" style="display:none">
                 <div class="form-group">
                     <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#datetimepicker1" readonly=”readonly”/>
+                        <input type="text" class="form-control datetimepicker-input bloqueo" data-toggle="datetimepicker" data-target="#datetimepicker1" placeholder="Fecha"/>
                         <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -131,7 +131,7 @@
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 slct-rangofecha" id="slct-rang1fecha" style="display:none;">
                 <div class="form-group">
                     <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#datetimepicker2"/>
+                        <input type="text" class="form-control datetimepicker-input bloqueo" data-target="#datetimepicker2" data-toggle="datetimepicker" placeholder="Inicio"/>
                         <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -142,7 +142,7 @@
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 slct-rangofecha" id="slct-rang2fecha" style="display:none;">
                 <div class="form-group">
                     <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#datetimepicker3"/>
+                        <input type="text" class="form-control datetimepicker-input bloqueo" data-target="#datetimepicker3" data-toggle="datetimepicker" placeholder="Fin"/>
                         <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -156,7 +156,7 @@
         </div>
 
             <!-- TABLA DE TUPLAS -->
-        <div class="row">
+        <div class="row" style="border:3px red solid">
             <table class="table table-hover table-striped">
                 <thead>
                     <tr>
