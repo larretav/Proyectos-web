@@ -92,14 +92,14 @@ function GenerarQuery() {
     }
 } //Fin Function
 
-function ConstFecha(fecha) {
-    var consfecha = "";
-    consfecha = fecha.substring(6,);
+
+function AcomodarFch(dtpicker) {
+    var dtp = document.getElementById(dtpicker).value;
+    var consfecha = dtp.substring(6,10) + "-" + dtp.substring(3,5) + "-" + dtp.substring(0,2) + dtp.substring(10,19);
+    return consfecha;
 }
 
-$(function () {
-    
-});
+//JQUERY
 
 $(document).ready(function() {
     //Formato de fechas
@@ -150,5 +150,21 @@ $(document).ready(function() {
     $('.bloqueo').on('paste', function(e){
         e.preventDefault();
     });
+
+    //Boton Consultar
+    $('#btn-consult').click(function(){
+        dtp = document.getElementById('slct-consultas').value;
+        switch (dtp) {
+            case '1': 
+                console.log(AcomodarFch("dtpicker-1"));
+                break;
+        
+            case '2':
+                console.log(AcomodarFch("dtpicker-rang1"));
+                console.log(AcomodarFch("dtpicker-rang2"));
+                break;
+        }
+        
+    })
 });
 
