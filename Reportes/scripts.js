@@ -102,9 +102,14 @@ function AcomodarFch(dtpicker) {
 //JQUERY
 
 $(document).ready(function() {
+    //Activar filtro de servicios (Todos, App, Cliente de calle)
+    $("#slct-tiposervicio").show(300);
+    $('#dtp-fecha').show(300);
+
     //Formato de fechas
     $('#datetimepicker1').datetimepicker({
-        format: "DD/MM/YYYY H:mm:00"
+        format: "DD/MM/YYYY",
+        locale: "ru"
     });
 
     $('#datetimepicker2').datetimepicker({
@@ -126,18 +131,28 @@ $(document).ready(function() {
 
     //Mostrar y ocultar DateTimePicker
     $("#slct-consultas").change(function(){
-        consulta = document.getElementById('slct-consultas').value;
+        consulta = $('#slct-consultas').val();
         switch (consulta) {
             case '1': 
-                $("#slct-fecha").show(300);
+                $('.servicios').hide();
 
-                $(".slct-rangofecha").hide();
+                $('#slct-tiposervicio').show(300);
+                $('#dtp-fecha').show(300);
                 break;
         
             case '2':
-                $("#slct-fecha").hide();
+                $('.servicios').hide();
 
-                $(".slct-rangofecha").show(300);
+                $('#dtp-rangofecha1').show(300);
+                $('#dtp-rangofecha2').show(300);
+                $('#slct-tiposervicio').show(300);
+                break;
+
+            case '3':
+                $('.servicios').hide();
+
+                $("#slct-filtrochofer").show(300);
+                $('#slct-tiposervicio').show(300);
                 break;
         }
     });

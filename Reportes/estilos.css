@@ -53,3 +53,8 @@ h1 {
   vertical-align:middle;
   text-align: center;
  }
+
+ /*Clase creada para ocultar los componentes de Viajes*/
+ .servicios{
+   display: none;
+ }
