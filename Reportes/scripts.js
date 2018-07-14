@@ -154,6 +154,11 @@ $(document).ready(function() {
                 $("#slct-filtrochofer").show(300);
                 $('#slct-tiposervicio').show(300);
                 break;
+            case '4':
+                $('.servicios').hide();
+
+                $('#dtp-fecha').show(300);
+                break;
         }
     });
 

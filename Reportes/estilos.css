@@ -58,3 +58,9 @@ h1 {
  .servicios{
    display: none;
  }
+
+ #slct-tserv{
+   border-top-right-radius: 0px;
+   border-top-left-radius: 0px;
+   border-color: red;
+ }
