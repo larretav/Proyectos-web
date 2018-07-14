@@ -58,9 +58,8 @@ h1 {
  .servicios{
    display: none;
  }
-
- #slct-tserv{
+/*Bordes del select filtro de chofer*/
+#slct-fchofer{
    border-top-right-radius: 0px;
-   border-top-left-radius: 0px;
-   border-color: red;
+   border-bottom-right-radius: 0px;
  }

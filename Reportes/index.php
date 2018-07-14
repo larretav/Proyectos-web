@@ -164,7 +164,7 @@
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 padding servicios" id="slct-filtrochofer">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <select class="form-control form-control-sm" >
+                                <select class="form-control form-control-sm" id="slct-fchofer">
                                     <option value="1">Id</option>
                                     <option value="2">Taxi</option>
                                     <option value="3">Nombre</option>
