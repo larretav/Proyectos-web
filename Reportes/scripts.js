@@ -109,16 +109,18 @@ $(document).ready(function() {
     //Formato de fechas
     $('#datetimepicker1').datetimepicker({
         format: "DD/MM/YYYY",
-        locale: "ru"
+        locale: "es"
     });
 
     $('#datetimepicker2').datetimepicker({
-        format: "DD/MM/YYYY H:mm:00"
+        format: "DD/MM/YYYY H:mm:00",
+        locale: "es"
     });
 
     $('#datetimepicker3').datetimepicker({
         useCurrent: false,
-        format: "DD/MM/YYYY H:mm:00"
+        format: "DD/MM/YYYY H:mm:00",
+        locale: "es"
     });
 
     //Enlazar DateTimePicker 2 y 3

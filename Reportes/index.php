@@ -105,62 +105,76 @@
         </div>
 
         <div class="row">
-            <form action="#" method="POST" style="width:100%;" autocomplete="off">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 padding">
-                        <select class="form-control form-control-sm" id="slct-consultas">
-                            <option value="1">Viajes del día</option>
-                            <option value="2">Viajes del día (rango de fechas)</option>
-                            <option value="3">Viajes de algún chofer</option>
-                            <option value="4">Servicios cancelados</option>
-                            <option value="5">Choferes</option>
-                            <option value="6">Choferes activos</option>
-                            <option value="7">Choferes en servicio</option>
-                            <option value="8">Choferes sin foto</option>
-                            <option value="9">Choferes con más viajes cancelados</option>
-                            <option value="10">Choferes por número de carro</option>
-                            <option value="11">Total de viajes de choferes</option>
-                            <option value="12">Ubicación por número de taxi</option>
-                            <option value="13">Actualizados</option>
-                            <option value="15">No actualizados (Activos)</option>
-                            <option value="14">Números de taxis</option>
-                            <option value="16">Activos y su última actualización</option>
-                        </select>
-                    </div>
+            <div class="col-12">
+                <form action="#" method="POST" style="width:100%;" autocomplete="off">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 padding">
+                            <select class="form-control form-control-sm" id="slct-consultas">
+                                <option value="1">Viajes del día</option>
+                                <option value="2">Viajes del día (rango de fechas)</option>
+                                <option value="3">Viajes de algún chofer</option>
+                                <option value="4">Servicios cancelados</option>
+                                <option value="5">Choferes</option>
+                                <option value="6">Choferes activos</option>
+                                <option value="7">Choferes en servicio</option>
+                                <option value="8">Choferes sin foto</option>
+                                <option value="9">Choferes con más viajes cancelados</option>
+                                <option value="10">Choferes por número de carro</option>
+                                <option value="11">Total de viajes de choferes</option>
+                                <option value="12">Ubicación por número de taxi</option>
+                                <option value="13">Actualizados</option>
+                                <option value="15">No actualizados (Activos)</option>
+                                <option value="14">Números de taxis</option>
+                                <option value="16">Activos y su última actualización</option>
+                            </select>
+                        </div>
 
-                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 bloqueo servicios" id="dtp-fecha">
-                        <div class="form-group">
-                            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input bloqueo form-control-sm" id="dtpicker-1" data-toggle="datetimepicker" data-target="#datetimepicker1" placeholder="Fecha" required/>
-                                <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 bloqueo servicios" id="dtp-fecha">
+                            <div class="form-group">
+                                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input bloqueo form-control-sm" id="dtpicker-1" data-toggle="datetimepicker" data-target="#datetimepicker1" placeholder="Fecha" required/>
+                                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 slct-rangofecha bloqueo servicios" id="dtp-rangofecha1">
-                        <div class="form-group">
-                            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input bloqueo form-control-sm" id="dtpicker-rang1" data-target="#datetimepicker2" data-toggle="datetimepicker" placeholder="Inicio"/>
-                                <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 slct-rangofecha bloqueo servicios" id="dtp-rangofecha1">
+                            <div class="form-group">
+                                <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input bloqueo form-control-sm" id="dtp-rang1" data-target="#datetimepicker2" data-toggle="datetimepicker" placeholder="Inicio"/>
+                                    <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 slct-rangofecha bloqueo servicios" id="dtp-rangofecha2">
-                        <div class="form-group">
-                            <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input bloqueo form-control-sm" id="dtpicker-rang2" data-target="#datetimepicker3" data-toggle="datetimepicker" placeholder="Fin"/>
-                                <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 slct-rangofecha bloqueo servicios" id="dtp-rangofecha2">
+                            <div class="form-group">
+                                <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input bloqueo form-control-sm" id="dtp-rang2" data-target="#datetimepicker3" data-toggle="datetimepicker" placeholder="Fin"/>
+                                    <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+<<<<<<< HEAD
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 padding servicios" id="slct-filtrochofer">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <select class="form-control form-control-sm" id="slct-fchofer">
+                                        <option value="1">Id</option>
+                                        <option value="2">Taxi</option>
+                                        <option value="3">Nombre</option>
+                                    </select>
+                                </div>
+                                
+                                <input type="text" class="form-control form-control-sm">
+=======
                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 padding servicios" id="slct-filtrochofer">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -169,25 +183,24 @@
                                     <option value="2">Taxi</option>
                                     <option value="3">Nombre</option>
                                 </select>
+>>>>>>> 2fe70aa83e836931b7f7042ea0b5f432bf323a32
                             </div>
-                            
-                            <input type="text" class="form-control form-control-sm">
+                        </div>
+                        
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 padding servicios" id="slct-tiposervicio">
+                            <select class="form-control form-control-sm" id="slct-tserv">
+                                <option value="1">Todos</option>
+                                <option value="2">Solo App</option>
+                                <option value="3">Cliente de calle</option>
+                            </select>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 padding">
+                            <input type="submit" class="btn btn-sm btn-warning" id="btn-consult" value="Consultar"/>
                         </div>
                     </div>
-                    
-                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 padding servicios" id="slct-tiposervicio">
-                        <select class="form-control form-control-sm">
-                            <option value="1">Todos</option>
-                            <option value="2">Solo App</option>
-                            <option value="3">Cliente de calle</option>
-                        </select>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
-                        <input type="submit" class="btn btn-sm btn-warning" id="btn-consult" value="Consultar"/>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
 
             <!-- TABLA DE TUPLAS -->
@@ -211,6 +224,7 @@
     
     <!-- Moment, Tempus Dominus y Tether (Para los DateTimePicker)-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
 

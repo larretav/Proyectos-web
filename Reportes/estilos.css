@@ -58,8 +58,22 @@ h1 {
  .servicios{
    display: none;
  }
+<<<<<<< HEAD
+/*Poner forma cuadrada de la derecha del Select Filtro de chofer*/
+ #slct-fchofer{
+   border-top-right-radius: 0px;
+   border-bottom-right-radius: 0px;
+ }
+
+ @media (min-width: 1200px){
+  #dtp-rangofecha1, #dtp-rangofecha2 {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+=======
 /*Bordes del select filtro de chofer*/
 #slct-fchofer{
    border-top-right-radius: 0px;
    border-bottom-right-radius: 0px;
+>>>>>>> 2fe70aa83e836931b7f7042ea0b5f432bf323a32
  }
