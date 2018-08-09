@@ -60,11 +60,16 @@ h1 {
  }
  
 /*Poner forma cuadrada de la derecha del Select Filtro de chofer*/
- #slct-sectores{
+ #slct-sector{
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
  }
  #localidad{
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
+}
+
+.coles{
+  border: solid green 2px;
+  height: auto;
 }

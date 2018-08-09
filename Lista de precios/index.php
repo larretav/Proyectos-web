@@ -28,11 +28,12 @@
             </div>
         </div>
 
+        <!-- TABLA DE FILTROS -->
         <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 padding">
+            <div class="col-xs-12 col-sm-9 col-md-7 col-lg-5 col-xl-4 padding">
                 <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
-                        <select class="form-control form-control-sm" id="slct-sectores">
+                        <select class="form-control form-control-sm" id="slct-sector">
                             <option selected>Sector...</option>
                             <option value="1">Ahome</option>
                             <option value="2">Carrizo</option>
@@ -51,21 +52,125 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 padding">
+            <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 col-xl-2 padding">
                 <input type="submit" class="btn btn-sm btn-warning" id="btn-consult" value="Consultar"/>
             </div>
         </div>
 
-            <!-- TABLA DE TUPLAS -->
+        <!-- TABLA DE SECTORES -->
         <div class="row" style="border:3px red solid">
             <div class="col-xs-12 col-lg-12">
-                <table class="table table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <!--  Generar nombre de columnas  -->
-                        </tr>
-                    </thead>
-                </table>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-ahome">
+                        <table class="table table-sm table-hover table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">SECTOR AHOME</th>
+                                    <th scope="col">PRECIO</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <tr>
+                                    <td>Camajoa</td>
+                                    <td>230</td>
+                                </tr>
+                                <tr>
+                                    <td>Pochotal</td>
+                                    <td>240</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-carrizo">
+                        <table class="table table-sm table-hover table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">SECTOR CARRIZO</th>
+                                    <th scope="col">PRECIO</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <tr>
+                                    <td>Camajoa</td>
+                                    <td>230</td>
+                                </tr>
+                                <tr>
+                                    <td>Pochotal</td>
+                                    <td>240</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-topolobampo">
+                        <table class="table table-sm table-hover table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">SECTOR TOPOLOBAMPO</th>
+                                    <th scope="col">PRECIO</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <tr>
+                                    <td>Camajoa</td>
+                                    <td>230</td>
+                                </tr>
+                                <tr>
+                                    <td>Pochotal</td>
+                                    <td>240</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-elfuerte">
+                        <table class="table table-sm table-hover table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">SECTOR EL FUERTE</th>
+                                    <th scope="col">PRECIO</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <tr>
+                                    <td>Camajoa</td>
+                                    <td>230</td>
+                                </tr>
+                                <tr>
+                                    <td>Pochotal</td>
+                                    <td>240</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-guasave">
+                        <table class="table table-sm table-hover table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">SECTOR GUASAVE</th>
+                                    <th scope="col">PRECIO</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <tr>
+                                    <td>Camajoa</td>
+                                    <td>230</td>
+                                </tr>
+                                <tr>
+                                    <td>Pochotal</td>
+                                    <td>240</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
