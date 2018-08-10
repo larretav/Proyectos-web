@@ -21,7 +21,7 @@
     <title>Lista de precios</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <h1>Lista de precios de U.T.V.N.S</h1>  
@@ -62,7 +62,7 @@
             <div class="col-xs-12 col-lg-12">
                 <div class="row" id="tbl-sectores">
                     <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-ahome">
-                        <table class="table table-sm table-hover table-striped" id="tbl_ahome">
+                        <table class="table table-sm table-hover table-striped" id="tbl-ahome">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">SECTOR AHOME</th>
@@ -77,7 +77,7 @@
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-carrizo">
-                        <table class="table table-sm table-hover table-striped" id="tbl_carrizo">
+                        <table class="table table-sm table-hover table-striped" id="tbl-carrizo">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">SECTOR CARRIZO</th>
@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-topolobampo">
-                        <table class="table table-sm table-hover table-striped" id="tbl_topolobampo">
+                        <table class="table table-sm table-hover table-striped" id="tbl-topolobampo">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">SECTOR TOPOLOBAMPO</th>
@@ -107,7 +107,7 @@
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-elfuerte">
-                        <table class="table table-sm table-hover table-striped" id="tbl_elfuerte">
+                        <table class="table table-sm table-hover table-striped" id="tbl-elfuerte">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">SECTOR EL FUERTE</th>
@@ -122,7 +122,7 @@
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-guasave">
-                        <table class="table table-sm table-hover table-striped" id="tbl_guasave">
+                        <table class="table table-sm table-hover table-striped" id="tbl-guasave">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">SECTOR GUASAVE</th>

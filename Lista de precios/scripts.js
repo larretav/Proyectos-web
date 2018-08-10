@@ -97,27 +97,41 @@ function autocomplete(inp, arr) {
 
 //Funcion Poner Precios al cargar la página
 function Poner_Precios(){
-  var tbl_sector=["tbl_ahome","tbl_carrizo","tbl_topolobampo","tbl_elfuerte","tbl_guasave"];
-  for (let sector = 0; sector < tbl_sector.length; sector++) {
-    for (let preciox = 0; preciox < array_precios.length; preciox++) {
-      for (let precioy = 0; precioy < 2; precioy++) {
-        var tbl = tbl_sector[sector];
-        var txtcelda = array_precios[preciox][precioy];
-        Crear_Celda(tbl, txtcelda, precioy);
-        alert(precioy);
-      }
+  var tbl_sector=["tbl-ahome","tbl-carrizo","tbl-topolobampo","tbl-elfuerte","tbl-guasave"];
+  var sector = 0 ;
+  for (let prec_ren = 0; prec_ren < array_precios.length; prec_ren++) {
+    if (prec_ren <= 37) {
+      //AHOME
+      sector = 0;
+    }else if(prec_ren > 37 && prec_ren <= 72){
+      //CARRIZO
+      sector = 1;
+    }else if(prec_ren > 72 && prec_ren <= 96){
+      //TOPOLOBAMPO
+      sector = 2;
+    }else if(prec_ren > 96 && prec_ren <= 125){
+      //EL FUERTE
+      sector = 3;
+    }else if(prec_ren > 125){
+      //GUASAVE
+      sector = 4;
     }
+    var tbl = tbl_sector[sector];
+    console.log(tbl);
+    Crear_Celda(tbl, prec_ren, array_precios);
   }
 }
 
 
 //Funcion Crear Celda
-function Crear_Celda(tabla, textocelda, columna) {
-  var tbl = $("#" + tabla)[0];
+function Crear_Celda(tabla, prec_ren, array) {
+  var tbl = $('#' + tabla)[0];
   var num_reng = tbl.rows.length;
   var row = tbl.insertRow(num_reng);
-  col = row.insertCell(columna);
-  col.innerHTML = textocelda;
+  for (let prec_col = 0; prec_col < 2; prec_col++) {
+    col = row.insertCell(prec_col);
+    col.innerHTML = array[prec_ren][prec_col];
+  }
 }
 
 /* Arreglo con todas las localidades para la busqueda de autocompletar */
@@ -304,7 +318,7 @@ var array_locali=[
 ]
 
 /* Arreglo con todas las localidades y precios */
-var tbl_ahome=[
+var array_precios=[
   //SECTOR AHOME
   ["BRISAS", "$120.00"],
   ["EJIDO LOUISIANA", "$120.00"],
@@ -343,11 +357,8 @@ var tbl_ahome=[
   ["COMPUERTAS", "$90.00"],
   ["EL CAMPITO", "$200.00"],
   ["EL TULE", "$250.00"],
-  ["LAS LAJITAS", "$600.00"]
-];
-
-var tbl_carrizo=[
-  //SECTOR CARRIZOPRECIO
+  ["LAS LAJITAS", "$600.00"],
+  //SECTOR CARRIZO
   ["FLOR AZUL", "$120.00"],
   ["GABRIEL LEYVA", "$130.00"],
   ["CUARTEL	", "$160.00"],
@@ -383,9 +394,6 @@ var tbl_carrizo=[
   ["NAVOJOA c/caseta", "$1,800.00"],
   ["HUATABAMPO c/caseta", "$1,600.00"],
   ["CAMAHUIROA c/caseta", "$1,500.00"],
-];
-
-var tbl_topolobampo=[
   //SECTOR TOPOLOBAMPO
   ["TOPOLOBAMPO", "$200.00"],
   ["AEROPUERTO", "$180.00"],
@@ -411,9 +419,6 @@ var tbl_topolobampo=[
   ["PANTEON", "$130.00"],
   ["PARQUE NIEBLAS", "$120.00"],
   ["GAS EXPRESS", "$120.00"],
-];
-
-var tbl_elfuerte=[
   //SECTOR EL FUERTE
   ["EJIDO 5 DE MAYO", "$80.00"],
   ["2 DE ABRIL", "$140.00"],
@@ -444,9 +449,6 @@ var tbl_elfuerte=[
   ["PRESA EL MAHONE", "$900.00"],
   ["PRESA JOSEFA ORTIZ", "$1,100.00"],
   ["CHINOBAMPO", "$1,100.00"],
-];
-
-var tbl_guasave=[
   //SECTOR GUASAVE
   ["ALMACENES Y G. PILARICA", "$100.00"],
   ["CAMPO LA ARROCERA", "$150.00"],
