@@ -94,6 +94,32 @@ function autocomplete(inp, arr) {
       closeAllLists(e.target);
   });
 }
+
+//Funcion Poner Precios al cargar la página
+function Poner_Precios(){
+  var tbl_sector=["tbl_ahome","tbl_carrizo","tbl_topolobampo","tbl_elfuerte","tbl_guasave"];
+  for (let sector = 0; sector < tbl_sector.length; sector++) {
+    for (let preciox = 0; preciox < array_precios.length; preciox++) {
+      for (let precioy = 0; precioy < 2; precioy++) {
+        var tbl = tbl_sector[sector];
+        var txtcelda = array_precios[preciox][precioy];
+        Crear_Celda(tbl, txtcelda, precioy);
+        alert(precioy);
+      }
+    }
+  }
+}
+
+
+//Funcion Crear Celda
+function Crear_Celda(tabla, textocelda, columna) {
+  var tbl = $("#" + tabla)[0];
+  var num_reng = tbl.rows.length;
+  var row = tbl.insertRow(num_reng);
+  col = row.insertCell(columna);
+  col.innerHTML = textocelda;
+}
+
 /* Arreglo con todas las localidades para la busqueda de autocompletar */
 var array_locali=[
     //SECTOR AHOME
@@ -278,7 +304,7 @@ var array_locali=[
 ]
 
 /* Arreglo con todas las localidades y precios */
-var array_precios=[
+var tbl_ahome=[
   //SECTOR AHOME
   ["BRISAS", "$120.00"],
   ["EJIDO LOUISIANA", "$120.00"],
@@ -317,7 +343,10 @@ var array_precios=[
   ["COMPUERTAS", "$90.00"],
   ["EL CAMPITO", "$200.00"],
   ["EL TULE", "$250.00"],
-  ["LAS LAJITAS", "$600.00"],
+  ["LAS LAJITAS", "$600.00"]
+];
+
+var tbl_carrizo=[
   //SECTOR CARRIZOPRECIO
   ["FLOR AZUL", "$120.00"],
   ["GABRIEL LEYVA", "$130.00"],
@@ -354,6 +383,9 @@ var array_precios=[
   ["NAVOJOA c/caseta", "$1,800.00"],
   ["HUATABAMPO c/caseta", "$1,600.00"],
   ["CAMAHUIROA c/caseta", "$1,500.00"],
+];
+
+var tbl_topolobampo=[
   //SECTOR TOPOLOBAMPO
   ["TOPOLOBAMPO", "$200.00"],
   ["AEROPUERTO", "$180.00"],
@@ -379,6 +411,9 @@ var array_precios=[
   ["PANTEON", "$130.00"],
   ["PARQUE NIEBLAS", "$120.00"],
   ["GAS EXPRESS", "$120.00"],
+];
+
+var tbl_elfuerte=[
   //SECTOR EL FUERTE
   ["EJIDO 5 DE MAYO", "$80.00"],
   ["2 DE ABRIL", "$140.00"],
@@ -409,6 +444,9 @@ var array_precios=[
   ["PRESA EL MAHONE", "$900.00"],
   ["PRESA JOSEFA ORTIZ", "$1,100.00"],
   ["CHINOBAMPO", "$1,100.00"],
+];
+
+var tbl_guasave=[
   //SECTOR GUASAVE
   ["ALMACENES Y G. PILARICA", "$100.00"],
   ["CAMPO LA ARROCERA", "$150.00"],
@@ -458,7 +496,7 @@ var array_precios=[
   ["MOCORITO", "$1,400.00"],
   ["PERICOS", "$1,700.00"],
   ["BADIRAGUATO", "$2,200.00"]
-]
+];
 
 
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
@@ -471,33 +509,39 @@ $(document).ready(function(){
     switch (consulta) {
       case 'Sector...': 
             $('.todos-sectores').hide();
-  
+
+            $(".todos-sectores").removeClass("col-xl-6");
             $('.todos-sectores').show(200);
             break;
       case '1': 
           $('.todos-sectores').hide();
+          $(".todos-sectores").addClass("col-xl-6");
 
           $('#id-ahome').show(200);
           break;
   
       case '2':
           $('.todos-sectores').hide();
+          $(".todos-sectores").addClass("col-xl-6");
 
           $('#id-carrizo').show(200);
           break;
 
       case '3':
           $('.todos-sectores').hide();
+          $(".todos-sectores").addClass("col-xl-6");
 
           $("#id-topolobampo").show(200);
           break;
       case '4':
           $('.todos-sectores').hide();
+          $(".todos-sectores").addClass("col-xl-6");
 
           $('#id-elfuerte').show(200);
           break;
       case '5':
           $('.todos-sectores').hide();
+          $(".todos-sectores").addClass("col-xl-6");
 
           $('#id-guasave').show(200);
           break;
@@ -505,11 +549,6 @@ $(document).ready(function(){
   });
 
   $('#btn-consult').click(function(){
-    for (let x = 0; x < 38; x++) {
-      for (let y = 0; y < 2; y++) {
-        console.log(array_precios[x][y]);
-
-      }
-    }
+    Poner_Precios();
   });
 });

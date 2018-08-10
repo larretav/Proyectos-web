@@ -60,9 +60,9 @@
         <!-- TABLA DE SECTORES -->
         <div class="row" style="border:3px red solid">
             <div class="col-xs-12 col-lg-12">
-                <div class="row">
+                <div class="row" id="tbl-sectores">
                     <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-ahome">
-                        <table class="table table-sm table-hover table-striped">
+                        <table class="table table-sm table-hover table-striped" id="tbl_ahome">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">SECTOR AHOME</th>
@@ -71,20 +71,13 @@
                             </thead>
                         
                             <tbody>
-                                <tr>
-                                    <td>Camajoa</td>
-                                    <td>230</td>
-                                </tr>
-                                <tr>
-                                    <td>Pochotal</td>
-                                    <td>240</td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-carrizo">
-                        <table class="table table-sm table-hover table-striped">
+                        <table class="table table-sm table-hover table-striped" id="tbl_carrizo">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">SECTOR CARRIZO</th>
@@ -93,20 +86,13 @@
                             </thead>
                         
                             <tbody>
-                                <tr>
-                                    <td>Camajoa</td>
-                                    <td>230</td>
-                                </tr>
-                                <tr>
-                                    <td>Pochotal</td>
-                                    <td>240</td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-topolobampo">
-                        <table class="table table-sm table-hover table-striped">
+                        <table class="table table-sm table-hover table-striped" id="tbl_topolobampo">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">SECTOR TOPOLOBAMPO</th>
@@ -115,20 +101,13 @@
                             </thead>
                         
                             <tbody>
-                                <tr>
-                                    <td>Camajoa</td>
-                                    <td>230</td>
-                                </tr>
-                                <tr>
-                                    <td>Pochotal</td>
-                                    <td>240</td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-elfuerte">
-                        <table class="table table-sm table-hover table-striped">
+                        <table class="table table-sm table-hover table-striped" id="tbl_elfuerte">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">SECTOR EL FUERTE</th>
@@ -137,20 +116,13 @@
                             </thead>
                         
                             <tbody>
-                                <tr>
-                                    <td>Camajoa</td>
-                                    <td>230</td>
-                                </tr>
-                                <tr>
-                                    <td>Pochotal</td>
-                                    <td>240</td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-guasave">
-                        <table class="table table-sm table-hover table-striped">
+                        <table class="table table-sm table-hover table-striped" id="tbl_guasave">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">SECTOR GUASAVE</th>
@@ -159,14 +131,7 @@
                             </thead>
                         
                             <tbody>
-                                <tr>
-                                    <td>Camajoa</td>
-                                    <td>230</td>
-                                </tr>
-                                <tr>
-                                    <td>Pochotal</td>
-                                    <td>240</td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
