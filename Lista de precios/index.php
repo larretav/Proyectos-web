@@ -20,8 +20,8 @@
 
     <title>Lista de precios</title>
 </head>
-<body>
-    <div class="container-fluid">
+<body onload="Poner_Precios();">
+    <div class="container-fluid" style="height:100%">
         <div class="row">
             <div class="col-md-12">
                 <h1>Lista de precios de U.T.V.N.S</h1>  
@@ -51,15 +51,12 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 col-xl-2 padding">
-                <input type="submit" class="btn btn-sm btn-warning" id="btn-consult" value="Consultar"/>
-            </div>
         </div>
 
         <!-- TABLA DE SECTORES -->
-        <div class="row" style="border:3px red solid">
+        <div class="row" id="contenedor-sectores">
             <div class="col-xs-12 col-lg-12">
+
                 <div class="row" id="tbl-sectores">
                     <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-ahome">
                         <table class="table table-sm table-hover table-striped" id="tbl-ahome">
@@ -114,7 +111,7 @@
                                     <th scope="col">PRECIO</th>
                                 </tr>
                             </thead>
-                        
+                                
                             <tbody>
                                 
                             </tbody>

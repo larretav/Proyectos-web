@@ -117,19 +117,31 @@ function Poner_Precios(){
       sector = 4;
     }
     var tbl = tbl_sector[sector];
-    console.log(tbl);
     Crear_Celda(tbl, prec_ren, array_precios);
   }
+
 }
 
 
-//Funcion Crear Celda
+//Funcion Crear Celda. Esta función trabaja con la tabla que tomaremos, prec_ren (la posicion del ciclo
+//For que recorre los renglones del arreglo y el arreglo de precios
 function Crear_Celda(tabla, prec_ren, array) {
-  var tbl = $('#' + tabla)[0];
+  //Tomamos el tbody hijo directo de la tabla
+  var tbl = $('#' + tabla + ' > tbody')[0];
+
+  //Sacamos el número de renglones del componente que tomamos
   var num_reng = tbl.rows.length;
+
+  //Instertamos el renglon al final de la tabla
   var row = tbl.insertRow(num_reng);
+
+  //Recorremos todas las columnas de la tabla y le agregamos valor a cada celda
   for (let prec_col = 0; prec_col < 2; prec_col++) {
+    //Insertamos la celda en el nuevo renglon
     col = row.insertCell(prec_col);
+    //Insertamos valor a la celda html, el valor será del arreglo de precios
+    //en la posicion prec_ren(posicion del ciclo For que recorre los renglones del arreglo) y
+    //prec_col (el valor del ciclo For que recorre las columnas del arreglo)
     col.innerHTML = array[prec_ren][prec_col];
   }
 }
@@ -365,13 +377,13 @@ var array_precios=[
   ["BACAPOROBAMPO", "$160.00"],
   ["SAN  MIGUEL", "$180.00"],
   ["TOSALIBAMPO	", "$240.00"],
-  ["NUEVO SAN MIGUEL", "$ 220.00"],
-  ["EL PORVENIR", "$ 240.00"],
+  ["NUEVO SAN MIGUEL", "$220.00"],
+  ["EL PORVENIR", "$240.00"],
   ["GOROS PUEBLO", "$220.00"],
   ["GUAYMAS", "$3,600.00"],
   ["POBLADO 7", "$400.00"],
   ["TABELOJECA", "$400.00"],
-  ["POBLADO 6", "$ 450.00"],
+  ["POBLADO 6", "$450.00"],
   ["LOS NATOCHES", "$450.00"],
   ["CHIHUAHITA c/caseta", "$460.00"],
   ["POBLADO 5 c/caseta", "$550.00"],
@@ -512,45 +524,41 @@ $(document).ready(function(){
       case 'Sector...': 
             $('.todos-sectores').hide();
 
-            $(".todos-sectores").removeClass("col-xl-6");
+            $(".todos-sectores").removeClass("col-xl-4");
             $('.todos-sectores').show(200);
             break;
       case '1': 
           $('.todos-sectores').hide();
-          $(".todos-sectores").addClass("col-xl-6");
+          $(".todos-sectores").addClass("col-xl-4");
 
           $('#id-ahome').show(200);
           break;
   
       case '2':
           $('.todos-sectores').hide();
-          $(".todos-sectores").addClass("col-xl-6");
+          $(".todos-sectores").addClass("col-xl-4");
 
           $('#id-carrizo').show(200);
           break;
 
       case '3':
           $('.todos-sectores').hide();
-          $(".todos-sectores").addClass("col-xl-6");
+          $(".todos-sectores").addClass("col-xl-4");
 
           $("#id-topolobampo").show(200);
           break;
       case '4':
           $('.todos-sectores').hide();
-          $(".todos-sectores").addClass("col-xl-6");
+          $(".todos-sectores").addClass("col-xl-4");
 
           $('#id-elfuerte').show(200);
           break;
       case '5':
           $('.todos-sectores').hide();
-          $(".todos-sectores").addClass("col-xl-6");
+          $(".todos-sectores").addClass("col-xl-4");
 
           $('#id-guasave').show(200);
           break;
     }
-  });
-
-  $('#btn-consult').click(function(){
-    Poner_Precios();
   });
 });

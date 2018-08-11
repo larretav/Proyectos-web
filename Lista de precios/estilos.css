@@ -6,7 +6,10 @@ body {
   font-family: Arial, sans-serif; 
   font-size: 12px;
 }
-  
+html, body{
+  height: 100%;
+  max-height: 100%;
+}
 .padding {
   padding-bottom: 15px;
 }
@@ -37,7 +40,23 @@ h1 {
   border-bottom-left-radius: 0px;
 }
 
-.coles{
-  border: solid green 2px;
-  height: auto;
+#contenedor-sectores{
+  overflow-y: auto;
+  height: 78%;
+}
+
+.color {
+  border: blue 2px solid;
+}
+
+@media (max-width: 403px){
+  h1{
+    font-size: 1.8em;
+    padding: 10px 0px;
+  }
+  .autocomplete
+  {
+    width: 47%;
+  }
+
 }
