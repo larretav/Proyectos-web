@@ -45,8 +45,10 @@ h1 {
   height: 78%;
 }
 
-.color {
-  border: blue 2px solid;
+div > p {
+  color: rgb(241, 62, 62);
+  font-weight: 700;
+  padding: 0px 0px;
 }
 
 @media (max-width: 403px){
@@ -58,5 +60,4 @@ h1 {
   {
     width: 47%;
   }
-
 }

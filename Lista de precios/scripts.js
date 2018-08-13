@@ -1,100 +1,3 @@
-function autocomplete(inp, arr) {
-    /*the autocomplete function takes two arguments,
-    the text field element and an array of possible autocompleted values:*/
-    var currentFocus;
-    /*execute a function when someone writes in the text field:*/
-    inp.addEventListener("input", function(e) {
-        var a, b, i, val = this.value;
-        /*close any already open lists of autocompleted values*/
-        closeAllLists();
-        if (!val) { return false;}
-        currentFocus = -1;
-        /*create a DIV element that will contain the items (values):*/
-        a = document.createElement("DIV");
-        a.setAttribute("id", this.id + "autocomplete-list");
-        a.setAttribute("class", "autocomplete-items");
-        /*append the DIV element as a child of the autocomplete container:*/
-        this.parentNode.appendChild(a);
-        /*for each item in the array...*/
-        for (i = 0; i < arr.length; i++) {
-          /*check if the item starts with the same letters as the text field value:*/
-          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-            /*create a DIV element for each matching element:*/
-            b = document.createElement("DIV");
-            /*make the matching letters bold:*/
-            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-            b.innerHTML += arr[i].substr(val.length);
-            /*insert a input field that will hold the current array item's value:*/
-            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-            /*execute a function when someone clicks on the item value (DIV element):*/
-                b.addEventListener("click", function(e) {
-                /*insert the value for the autocomplete text field:*/
-                inp.value = this.getElementsByTagName("input")[0].value;
-                /*close the list of autocompleted values,
-                (or any other open lists of autocompleted values:*/
-                closeAllLists();
-            });
-            a.appendChild(b);
-          }
-        }
-    });
-    /*execute a function presses a key on the keyboard:*/
-    inp.addEventListener("keydown", function(e) {
-        var x = document.getElementById(this.id + "autocomplete-list");
-        if (x) x = x.getElementsByTagName("div");
-        if (e.keyCode == 40) {
-          /*If the arrow DOWN key is pressed,
-          increase the currentFocus variable:*/
-          currentFocus++;
-          /*and and make the current item more visible:*/
-          addActive(x);
-        } else if (e.keyCode == 38) { //up
-          /*If the arrow UP key is pressed,
-          decrease the currentFocus variable:*/
-          currentFocus--;
-          /*and and make the current item more visible:*/
-          addActive(x);
-        } else if (e.keyCode == 13) {
-          /*If the ENTER key is pressed, prevent the form from being submitted,*/
-          e.preventDefault();
-          if (currentFocus > -1) {
-            /*and simulate a click on the "active" item:*/
-            if (x) x[currentFocus].click();
-          }
-        }
-    });
-    function addActive(x) {
-      /*a function to classify an item as "active":*/
-      if (!x) return false;
-      /*start by removing the "active" class on all items:*/
-      removeActive(x);
-      if (currentFocus >= x.length) currentFocus = 0;
-      if (currentFocus < 0) currentFocus = (x.length - 1);
-      /*add class "autocomplete-active":*/
-      x[currentFocus].classList.add("autocomplete-active");
-    }
-    function removeActive(x) {
-      /*a function to remove the "active" class from all autocomplete items:*/
-      for (var i = 0; i < x.length; i++) {
-        x[i].classList.remove("autocomplete-active");
-      }
-    }
-    function closeAllLists(elmnt) {
-      /*close all autocomplete lists in the document,
-      except the one passed as an argument:*/
-      var x = document.getElementsByClassName("autocomplete-items");
-      for (var i = 0; i < x.length; i++) {
-        if (elmnt != x[i] && elmnt != inp) {
-        x[i].parentNode.removeChild(x[i]);
-      }
-    }
-  }
-  /*execute a function when someone clicks in the document:*/
-  document.addEventListener("click", function (e) {
-      closeAllLists(e.target);
-  });
-}
-
 //Funcion Poner Precios al cargar la página
 function Poner_Precios(){
   var tbl_sector=["tbl-ahome","tbl-carrizo","tbl-topolobampo","tbl-elfuerte","tbl-guasave"];
@@ -103,16 +6,16 @@ function Poner_Precios(){
     if (prec_ren <= 37) {
       //AHOME
       sector = 0;
-    }else if(prec_ren > 37 && prec_ren <= 72){
+    }else if(prec_ren > 37 && prec_ren <= 73){
       //CARRIZO
       sector = 1;
-    }else if(prec_ren > 72 && prec_ren <= 96){
+    }else if(prec_ren > 73 && prec_ren <= 97){
       //TOPOLOBAMPO
       sector = 2;
-    }else if(prec_ren > 96 && prec_ren <= 125){
+    }else if(prec_ren > 97 && prec_ren <= 126){
       //EL FUERTE
       sector = 3;
-    }else if(prec_ren > 125){
+    }else if(prec_ren > 126){
       //GUASAVE
       sector = 4;
     }
@@ -150,7 +53,7 @@ function Crear_Celda(tabla, prec_ren, array) {
 var array_locali=[
     //SECTOR AHOME
     "BRISAS",
-    "LOUISIANA",
+    "EJ. LOUISIANA",
     "18 DE MARZO",
     "FELIPE ANGELES",
     "GOROS Nº 2",
@@ -182,7 +85,7 @@ var array_locali=[
     "EL ALHUATE",
     "LAS GRULLAS DERECHO",
     "EL COLORADO",
-    "MOCHIS",
+    "EJ. MOCHIS",
     "COMPUERTAS",
     "EL CAMPITO",
     "EL TULE",
@@ -192,7 +95,7 @@ var array_locali=[
     "GABRIEL LEYVA",
     "CUARTEL ",
     "BACAPOROBAMPO",
-    "SAN  MIGUEL ",
+    "SAN MIGUEL ",
     "TOSALIBAMPO",
     "NUEVO SAN MIGUEL",
     "EL PORVENIR",
@@ -233,10 +136,10 @@ var array_locali=[
     "CAMPO ESTRADA",
     "OHUIRA",
     "FLORES MAGON",
-    "20 DE NOV. NUEVO",
-    "1RO DE MAYO",
-    "9 DE DICIEMBRE",
-    "BENITO JUAREZ",
+    "EJ. 20 DE NOV. NUEVO",
+    "EJ. 1RO DE MAYO",
+    "EJ. 9 DE DICIEMBRE",
+    "EJ. BENITO JUAREZ",
     "PLAN DE AYALA",
     "PLAN DE SAN LUIS",
     "BACHOMOPAMPO 1",
@@ -249,12 +152,12 @@ var array_locali=[
     "PARQUE NIEBLAS",
     "GAS EXPRESS",
     //SECTOR EL FUERTE
-    "5 DE MAYO",
+    "EJ. 5 DE MAYO",
     "2 DE ABRIL",
     "TAXTES",
     "TEROQUE",
     "ALIMENTOS DEL FUERTE",
-    "MOCHICAHUI",
+    "EJ. MOCHICAHUI",
     "CONSTANCIA",
     "VINATERIAS",
     "PARAISO",
@@ -269,7 +172,7 @@ var array_locali=[
     "TEHUECO",
     "JAHUARA",
     "BAROTEN",
-    "ANTONIO ROSALES",
+    "EJ. ANTONIO ROSALES",
     "SIBAJAHUI",
     "MACOYAHUI",
     "HIGUERA NATOCHEZ",
@@ -282,12 +185,12 @@ var array_locali=[
     "ALMACENES Y G. PILARICA",
     "CAMPO LA ARROCERA",
     "CAMPO 35",
-    "4 MILPAS",
+    "EJ. 4 MILPAS",
     "EL ALHUATE",
     "BUENA VISTA",
     "LAS PANGUITAS",
     "LA GENOVEBA",
-    "LA ARROCERA",
+    "EJ. LA ARROCERA",
     "TRES GARANTIAS",
     "AGUA DE LAS ARENAS",
     "JUAN JOSE RIOS",
@@ -297,7 +200,7 @@ var array_locali=[
     "CORTINES #3",
     "LEYVA SOLANO",
     "BATAMOTE POBLADO",
-    "BATAMOTE",
+    "BATAMOTE EJIDO",
     "MEZQUITE ALTO",
     "GUASAVE",
     "EL NARANJO",
@@ -333,7 +236,7 @@ var array_locali=[
 var array_precios=[
   //SECTOR AHOME
   ["BRISAS", "$120.00"],
-  ["EJIDO LOUISIANA", "$120.00"],
+  ["EJ. LOUISIANA", "$120.00"],
   ["18 DE MARZO", "$140.00"],
   ["FELIPE ANGELES", "$140.00"],
   ["GOROS Nº 2", "$160.00"],
@@ -402,10 +305,11 @@ var array_precios=[
   ["LA BOLSA 2", "$450.00"],
   ["CACHOANA", "$200.00"],
   ["SAN ANTONIO", "$250.00"],
-  ["OBREGON c/caseta", "$2,200.00"],
+  ["OBREGON c/caseta", "$2,500.00"],
   ["NAVOJOA c/caseta", "$1,800.00"],
   ["HUATABAMPO c/caseta", "$1,600.00"],
   ["CAMAHUIROA c/caseta", "$1,500.00"],
+  ["HERMOSILLO", "$6,000.00"],
   //SECTOR TOPOLOBAMPO
   ["TOPOLOBAMPO", "$200.00"],
   ["AEROPUERTO", "$180.00"],
@@ -432,12 +336,12 @@ var array_precios=[
   ["PARQUE NIEBLAS", "$120.00"],
   ["GAS EXPRESS", "$120.00"],
   //SECTOR EL FUERTE
-  ["EJIDO 5 DE MAYO", "$80.00"],
+  ["EJ. 5 DE MAYO", "$80.00"],
   ["2 DE ABRIL", "$140.00"],
   ["TAXTES", "$140.00"],
   ["TEROQUE", "$210.00"],
   ["ALIMENTOS DEL FUERTE", "$170.00"],
-  ["EJIDO MOCHICAHUI", "$190.00"],
+  ["EJ. MOCHICAHUI", "$190.00"],
   ["CONSTANCIA", "$210.00"],
   ["VINATERIAS", "$260.00"],
   ["EJ. PARAISO", "$250.00"],
@@ -465,7 +369,7 @@ var array_precios=[
   ["ALMACENES Y G. PILARICA", "$100.00"],
   ["CAMPO LA ARROCERA", "$150.00"],
   ["CAMPO 35", "$190.00"],
-  ["EJIDO 4 MILPAS", "$200.00"],
+  ["EJ. 4 MILPAS", "$200.00"],
   ["EL ALHUATE", "$200.00"],
   ["BUENA VISTA", "$400.00"],
   ["LAS PANGUITAS", "$400.00"],
@@ -480,7 +384,7 @@ var array_precios=[
   ["CORTINES #3", "$310.00"],
   ["LEYVA SOLANO", "$400.00"],
   ["BATAMOTE POBLADO", "$700.00"],
-  ["EJ. BATAMOTE", "$480.00"],
+  ["BATAMOTE EJIDO", "$480.00"],
   ["MEZQUITE ALTO", "$1,000.00"],
   ["GUASAVE", "$600.00"],
   ["EL NARANJO", "$700.00"],
@@ -509,26 +413,27 @@ var array_precios=[
   ["ANGOSTURA", "$1,500.00"],
   ["MOCORITO", "$1,400.00"],
   ["PERICOS", "$1,700.00"],
-  ["BADIRAGUATO", "$2,200.00"]
+  ["BADIRAGUATO", "$2,200.00"],
+  ["LA PIEDRERA (OXXO)", "$170.00"]
 ];
 
-
-/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-autocomplete(document.getElementById("localidad"), array_locali);
-
-//Mostrar y ocultar DateTimePicker
+//JQuery
+//Ocultar tabla de resultados de busqueda
+$('#id-busqueda').hide();
 $(document).ready(function(){
   $("#slct-sector").change(function(){
     consulta = $('#slct-sector').val();
     switch (consulta) {
       case 'Sector...': 
-            $('.todos-sectores').hide();
+          $('.todos-sectores').hide();
 
-            $(".todos-sectores").removeClass("col-xl-4");
-            $('.todos-sectores').show(200);
-            break;
+          $(".todos-sectores").removeClass("col-xl-4");
+          $('.todos-sectores').show(200);
+          $('#id-busqueda').hide();
+          break;
       case '1': 
           $('.todos-sectores').hide();
+          $('#id-busqueda').hide();
           $(".todos-sectores").addClass("col-xl-4");
 
           $('#id-ahome').show(200);
@@ -536,6 +441,7 @@ $(document).ready(function(){
   
       case '2':
           $('.todos-sectores').hide();
+          $('#id-busqueda').hide();
           $(".todos-sectores").addClass("col-xl-4");
 
           $('#id-carrizo').show(200);
@@ -543,22 +449,67 @@ $(document).ready(function(){
 
       case '3':
           $('.todos-sectores').hide();
+          $('#id-busqueda').hide();
           $(".todos-sectores").addClass("col-xl-4");
 
           $("#id-topolobampo").show(200);
           break;
       case '4':
           $('.todos-sectores').hide();
+          $('#id-busqueda').hide();
           $(".todos-sectores").addClass("col-xl-4");
 
           $('#id-elfuerte').show(200);
           break;
       case '5':
           $('.todos-sectores').hide();
+          $('#id-busqueda').hide();
           $(".todos-sectores").addClass("col-xl-4");
 
           $('#id-guasave').show(200);
           break;
+    }
+  });
+
+  
+  $('#localidad').keyup(function(){
+    if($('#localidad').val() != ""){
+      //Se borran todos los renglones de la tabla HTML
+      $('#tbl-busqueda > tbody > tr').remove();
+
+      //obtenemos el valor del input en mayusculas
+      str_input = $('#localidad').val().toUpperCase();
+      for (i = 0; i < array_precios.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        console.log(str_input);
+        //Obtenemos la localidad en mayusculas
+        var str_arr = array_precios[i][0].toUpperCase();
+
+        if (str_arr.indexOf(str_input) > -1) {
+          $('.todos-sectores').hide();
+          $(".todos-sectores").addClass("col-xl-4");
+          $('#id-busqueda').show(50);
+          console.log(str_arr.indexOf(str_input));
+          tbl = $('#tbl-busqueda > tbody')[0];
+          var num_reng = tbl.rows.length;
+          var row = tbl.insertRow(num_reng);
+
+          col = row.insertCell(0);
+          //Extraemos de la cadena del array los caracteres del 0 hasta el index de la primera coincidencia del
+          //string del input, le concatenamos la subcadena resultante desde el index de la primera coincidencia
+          //del string del input hasta la longitud del string del input, por último concatenamos la subcadena
+          //resultante DESDE el index del string del input sumandole la longitud de la cadena del input HASTA
+          //la longitud de la cadena que hemos tomado del arreglo array_precios
+          col.innerHTML = str_arr.substr(0, str_arr.indexOf(str_input)) + "<strong style='color: blue;'>" + array_precios[i][0].substr(str_arr.indexOf(str_input), str_input.length) + "</strong>";
+          col.innerHTML += str_arr.substr(str_arr.indexOf(str_input) + str_input.length, str_arr.length);
+
+          //Insertamos una segunda celda con el precio
+          col = row.insertCell(1);
+          col.innerHTML = array_precios[i][1];
+        }
+      }
+    } else{
+      $('#tbl-busqueda > tbody > tr').remove();
     }
   });
 });
