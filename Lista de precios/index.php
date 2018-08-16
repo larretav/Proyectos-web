@@ -70,7 +70,7 @@
 
                 <div class="row" id="tbl-sectores">
                     
-                    <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-ahome">
+                    <div class="col-xs-12 col-sm-6 col-md-auto col-lg-auto todos-sectores" id="id-ahome">
                         <table class="table table-sm table-hover table-striped" id="tbl-ahome">
                             <thead class="thead-dark">
                                 <tr>
@@ -85,7 +85,7 @@
                         </table>
                     </div>
 
-                    <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-carrizo">
+                    <div class="col-xs-12 col-sm-6 col-md-auto col-lg-auto todos-sectores" id="id-carrizo">
                         <table class="table table-sm table-hover table-striped" id="tbl-carrizo">
                             <thead class="thead-dark">
                                 <tr>
@@ -100,7 +100,7 @@
                         </table>
                     </div>
 
-                    <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-topolobampo">
+                    <div class="col-xs-12 col-sm-6 col-md-auto col-lg-auto todos-sectores" id="id-topolobampo">
                         <table class="table table-sm table-hover table-striped" id="tbl-topolobampo">
                             <thead class="thead-dark">
                                 <tr>
@@ -115,7 +115,7 @@
                         </table>
                     </div>
 
-                    <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-elfuerte">
+                    <div class="col-xs-12 col-sm-6 col-md-auto col-lg-auto todos-sectores" id="id-elfuerte">
                         <table class="table table-sm table-hover table-striped" id="tbl-elfuerte">
                             <thead class="thead-dark">
                                 <tr>
@@ -130,7 +130,7 @@
                         </table>
                     </div>
 
-                    <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-guasave">
+                    <div class="col-xs-12 col-sm-6 col-md-auto col-lg-auto todos-sectores" id="id-guasave">
                         <table class="table table-sm table-hover table-striped" id="tbl-guasave">
                             <thead class="thead-dark">
                                 <tr>
@@ -145,7 +145,7 @@
                         </table>
                     </div>
 
-                    <div class="col-xs-12 col-sm-6 col-md col-lg todos-sectores" id="id-busqueda">
+                    <div class="col-xs-12 col-sm-6 col-md-auto col-lg-auto todos-sectores" id="id-busqueda">
                         <table class="table table-sm table-hover table-striped" id="tbl-busqueda">
                             <thead class="thead-dark">
                                 <tr>
